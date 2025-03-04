@@ -11,15 +11,15 @@ for s in strings:
 
 #Task 2
 def match_a_followed_by_two_or_three_b(txt):
-    txt = input()
     return re.fullmatch(r'ab{2,3}', txt) is not None
-print(match_a_followed_by_two_or_three_b())
+txt = input()
+print(match_a_followed_by_two_or_three_b(txt))
 
 # Task 3
 def find_sequences_lowercase_with_underscore(s):
-    s = input()
     return re.findall(r'\b[a-z]+_[a-z]+\b', s)
-print(find_sequences_lowercase_with_underscore())
+s = input()
+print(find_sequences_lowercase_with_underscore(s))
 
 # Task 4
 #Найти последовательности из одной прописной буквы, за которой следуют строчные буквы.
@@ -33,6 +33,7 @@ print(find_upper_followed_by_lower())
 def match_a_followed_by_anything_ending_in_b(sentence):
     sentence = input()
     return re.fullmatch(r'a.*b', sentence) is not None
+
 print(match_a_followed_by_anything_ending_in_b())
 
 # Task 6
@@ -59,12 +60,14 @@ print(split_at_uppercase())
 # Task 9
 
 def insert_spaces_before_capitals(d):
-    d = input()
-    return re.sub(r'([A-Z])', r' \1', d).strip()
-print(insert_spaces_before_capitals())
+    
+    return ''.join(re.findall(r'[A-Z][a-z]*'))
+d = input('Enter the text for task 9:')
+print(insert_spaces_before_capitals(d))
 
 # Task 10
 def camel_to_snake(e):
     e = input()
+    
     return re.sub(r'([a-z])([A-Z])', r'\1_\2', e).lower()
 print(camel_to_snake())
