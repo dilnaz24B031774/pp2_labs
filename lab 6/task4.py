@@ -1,3 +1,4 @@
+#код считает количество строк в файле и выводит результат.
 def count_lines(filename):
     try:
         with open(filename, 'r') as file:

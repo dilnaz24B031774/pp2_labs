@@ -8,4 +8,4 @@ def delete_file(path):
             print("No write permission")
     else:
         print("File does not exist")
-delete_file('pp2_labs/sample.txt')  # Change to the actual file path
+delete_file('pp2_labs/sample.txt')  

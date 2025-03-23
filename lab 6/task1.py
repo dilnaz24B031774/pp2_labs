@@ -1,6 +1,6 @@
 import os
 
-def list_contents(path='.'):
+def list_contents(path):
     directories = [d for d in os.listdir(path) if os.path.isdir(os.path.join(path, d))]
     files = [f for f in os.listdir(path) if os.path.isfile(os.path.join(path, f))]
     all_items = os.listdir(path)

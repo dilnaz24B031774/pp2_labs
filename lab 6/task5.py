@@ -3,3 +3,4 @@ def write_list_to_file(filename, items):
         for item in items:
             file.write(str(item) + '\n')
 write_list_to_file('output.txt', ['computer', 'TV', 'phone','tablet'])
+

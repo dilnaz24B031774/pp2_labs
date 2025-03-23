@@ -1,3 +1,4 @@
+#Этот код создает 26 текстовых файлов
 import string
 def create_text_files():
     for letter in string.ascii_uppercase:

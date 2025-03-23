@@ -1,3 +1,5 @@
+#Этот код проверяет существование указанного пути и, если он существует, 
+# выводит его директорию и имя файла
 import os
 def path_info(path):
     if os.path.exists(path):
@@ -7,4 +9,4 @@ def path_info(path):
     else:
         print("Path does not exist")
 
-path_info('pp2_labs/lab 1-2')  # Change to the desired path
+path_info('pp2_labs/lab 1-2')  
