@@ -23,6 +23,7 @@ pygame.display.set_caption("Snake Game")
 clock = pygame.time.Clock()
 
 def display_text(text, x, y, color=white, center=False):
+    """Отображает текст на экране."""
     value = font_style.render(text, True, color)
     if center:
         text_rect = value.get_rect(center=(screen_width // 2, screen_height // 2))
@@ -31,22 +32,26 @@ def display_text(text, x, y, color=white, center=False):
         screen.blit(value, [x, y])
 
 def draw_snake(snake_list):
+    """Рисует змею на экране."""
     for x, y in snake_list:
         pygame.draw.rect(screen, green, [x, y, snake_size, snake_size])
 
 def generate_food(snake_list):
+    """Генерирует еду в случайном месте, не совпадающем с телом змеи."""
     while True:
         food_x = random.randrange(0, screen_width - food_size, 10)
         food_y = random.randrange(0, screen_height - food_size, 10)
         if (food_x, food_y) not in snake_list:
-            return food_x, food_y
+            return food_x, food_y, random.choice([1, 2, 3])  # Разный вес еды
 
 def game_loop():
+    """Основной игровой цикл."""
     x, y = screen_width // 2, screen_height // 2
     dx, dy = 0, 0
     snake_list = []
     snake_length = 1
-    food_x, food_y = generate_food(snake_list)
+    food_x, food_y, food_value = generate_food(snake_list)
+    food_timer = time.time() + 5  # Таймер на исчезновение еды
     score = 0
     level = 1
     speed = initial_speed
@@ -89,12 +94,18 @@ def game_loop():
             break
         
         if x == food_x and y == food_y:
-            food_x, food_y = generate_food(snake_list)
-            snake_length += 1
-            score += 1
+            food_x, food_y, food_value = generate_food(snake_list)
+            food_timer = time.time() + 5  # Сброс таймера еды
+            snake_length += food_value  # Учитываем вес еды
+            score += food_value
             if score % 5 == 0:
                 level += 1
                 speed += 2
+        
+        # Проверка исчезновения еды
+        if time.time() > food_timer:
+            food_x, food_y, food_value = generate_food(snake_list)
+            food_timer = time.time() + 5
         
         clock.tick(speed)
     

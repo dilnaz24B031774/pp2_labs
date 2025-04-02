@@ -10,10 +10,10 @@ music_directory = "pp2_labs/lab 7/music_player/musics"
 os.chdir(music_directory)
 
 music_files = [file for file in os.listdir() if file.endswith(".mp3")]
-current_track = 0
-paused = False
+current_track = 0 # индекс текущего трека (начинается с первого в списке)
+paused = False 
 pygame.mixer.music.load(music_files[current_track])
-
+#Установка шрифта
 font = pygame.font.Font(None, 24)
 icon = pygame.image.load("../icon.jpg")
 ikaif = pygame.transform.scale(icon, (200, 200))

@@ -15,11 +15,9 @@ canvas = pygame.Surface((WIDTH, HEIGHT))
 canvas.fill(WHITE)
 
 tool_icons = {
-    "brush": pygame.image.load("img/brush.png"),
-    "clear": pygame.image.load("img/clear.png"),
-    "cursor": pygame.image.load("img/cursor.png"),
-    "eraser": pygame.image.load("img/eraser.png"),
-    "save": pygame.image.load("img/save.png")
+    "brush": pygame.image.load("pp2_labs/lab 8/paint_tasks/icon/paint-brush.png"),
+    "clear": pygame.image.load("pp2_labs/lab 8/paint_tasks/icon/clear1.png"),
+    "eraser": pygame.image.load("pp2_labs/lab 8/paint_tasks/icon/eraser1.png"),
 }
 
 tool_buttons = {}
@@ -41,7 +39,7 @@ start_pos = None
 shapes = []
 
 def draw_toolbar():
-    pygame.draw.rect(screen, (200, 200, 200), (0, HEIGHT, WIDTH, toolbar_height))
+    pygame.draw.rect(screen, (142, 69, 133), (0, HEIGHT, WIDTH, toolbar_height))
     for tool, rect in tool_buttons.items():
         screen.blit(pygame.transform.scale(tool_icons[tool], (40, 40)), rect.topleft)
 
@@ -60,8 +58,9 @@ def save_image():
 def redraw_canvas():
     screen.blit(canvas, (0, 0))
     draw_toolbar()
-    instruction_text = FONT.render("1 - Черный, 2 - Красный, 3 - Зеленый, 4 - Синий | P - Кисть, R - Прямоугольник, C - Круг, E - Ластик", True, BLACK)
+    instruction_text = FONT.render("1 - Черный, 2 - Красный, 3 - Зеленый, 4 - Синий | B - Кисть, R - Прямоугольник, C - Круг, E-Ластик", True, (0, 0, 139))
     screen.blit(instruction_text, (10, HEIGHT - 20))
+
 while running:
     redraw_canvas()
     for event in pygame.event.get():
